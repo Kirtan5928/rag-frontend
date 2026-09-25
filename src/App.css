@@ -1,124 +1,23 @@
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  background-color: #0f1117;
-  color: #e5e7eb;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-.app-container {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 48px 24px;
-}
-
-h1 {
-  font-size: 28px;
-  margin-bottom: 4px;
-}
-
-.subtitle {
-  color: #9ca3af;
-  margin-top: 0;
-  margin-bottom: 32px;
-}
-
-.query-form {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 24px;
-}
-
-.query-form input {
-  flex: 1;
-  padding: 12px 16px;
-  border-radius: 8px;
-  border: 1px solid #2d3139;
-  background-color: #1a1d24;
-  color: #e5e7eb;
-  font-size: 15px;
-}
-
-.query-form input:focus {
-  outline: none;
-  border-color: #3b82f6;
-}
-
-.query-form button {
-  padding: 12px 20px;
-  border-radius: 8px;
-  border: none;
-  background-color: #3b82f6;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.query-form button:disabled {
-  background-color: #374151;
-  cursor: not-allowed;
-}
-
-.error {
-  color: #f87171;
-  background-color: #2a1518;
-  padding: 12px 16px;
-  border-radius: 8px;
-}
-
-.answer-box {
-  background-color: #1a1d24;
-  border: 1px solid #2d3139;
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 24px;
-}
-
-.answer-box h2 {
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #9ca3af;
-  margin-top: 0;
-}
-
-.sources-box h2 {
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #9ca3af;
-}
-
-.source-card {
-  background-color: #15171d;
-  border: 1px solid #2d3139;
-  border-radius: 8px;
-  padding: 14px 16px;
-  margin-bottom: 12px;
-}
-
-.source-header {
-  display: flex;
-  justify-content: space-between;
-  font-size: 13px;
-  margin-bottom: 8px;
-}
-
-.chunk-id {
-  color: #60a5fa;
-  font-family: monospace;
-}
-
-.score {
-  color: #9ca3af;
-}
-
-.source-text {
-  font-size: 14px;
-  color: #d1d5db;
-  margin: 0;
-  line-height: 1.5;
-}
+* { box-sizing: border-box; }
+body { margin: 0; background: #0f1117; color: #e5e7eb; font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif; }
+.app-container { max-width: 820px; margin: 0 auto; padding: 48px 24px; }
+h1 { font-size: 28px; margin-bottom: 4px; }
+.subtitle { color: #9ca3af; margin: 0 0 28px; }
+.document-panel { display: flex; gap: 10px; margin-bottom: 16px; align-items: center; }
+.upload-button, .delete-button { padding: 10px 16px; border-radius: 8px; border: 1px solid #2d3139; cursor: pointer; font-weight: 600; }
+.upload-button { background: #3b82f6; color: white; border: none; }
+.delete-button { background: #2a1518; color: #f87171; }
+.document-panel select { flex: 1; padding: 11px; border-radius: 8px; border: 1px solid #2d3139; background: #1a1d24; color: #e5e7eb; }
+.query-form { display: flex; gap: 8px; margin-bottom: 24px; }
+.query-form input { flex: 1; padding: 12px 16px; border-radius: 8px; border: 1px solid #2d3139; background: #1a1d24; color: #e5e7eb; font-size: 15px; }
+.query-form button { padding: 12px 20px; border-radius: 8px; border: none; background: #3b82f6; color: white; font-weight: 600; cursor: pointer; }
+.query-form button:disabled { background: #374151; cursor: not-allowed; }
+.hint { color: #9ca3af; }
+.error { color: #f87171; background: #2a1518; padding: 12px 16px; border-radius: 8px; }
+.answer-box { background: #1a1d24; border: 1px solid #2d3139; border-radius: 12px; padding: 20px; margin-bottom: 24px; }
+.answer-box h2, .sources-box h2 { font-size: 14px; text-transform: uppercase; letter-spacing: .05em; color: #9ca3af; margin-top: 0; }
+.source-card { background: #15171d; border: 1px solid #2d3139; border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; }
+.source-header { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px; gap: 12px; }
+.score { color: #9ca3af; white-space: nowrap; }
+.source-text { font-size: 14px; color: #d1d5db; margin: 0; line-height: 1.5; }
+@media (max-width: 640px) { .document-panel, .query-form { flex-direction: column; align-items: stretch; } }
