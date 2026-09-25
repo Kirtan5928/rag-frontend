@@ -67,7 +67,7 @@ function App() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           question,
-          hybrid_threshold: 0.8,
+          hybrid_threshold: 0.0,
           document_id: selectedDocument || null,
         }),
       });
