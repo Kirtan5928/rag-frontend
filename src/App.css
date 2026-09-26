@@ -75,9 +75,9 @@ button, label, select { -webkit-tap-highlight-color: transparent; }
 .topbar {
   position: relative;
   z-index: 2;
-  max-width: 1180px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 28px 28px 18px;
+  padding: 24px 32px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -146,13 +146,13 @@ button, label, select { -webkit-tap-highlight-color: transparent; }
 .workspace {
   position: relative;
   z-index: 1;
-  max-width: 1000px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 54px 28px 42px;
+  padding: 42px 32px 42px;
 }
 
 .hero {
-  max-width: 760px;
+  max-width: 900px;
   margin: 0 auto 54px;
   text-align: center;
   animation: reveal .8s .08s ease both;
@@ -752,4 +752,247 @@ button, label, select { -webkit-tap-highlight-color: transparent; }
   .source-card-main { padding-right: 12px; }
   .source-header { align-items: flex-start; flex-direction: column; gap: 7px; }
   .footer { flex-direction: column; align-items: flex-start; }
+}
+
+/* Depth and tactile 3D interactions */
+.workspace,
+.control-card,
+.query-section,
+.results-section,
+.footer {
+  perspective: 1200px;
+}
+
+.control-card,
+.query-input-wrap,
+.ask-button,
+.upload-zone,
+.document-meta,
+.answer-card,
+.source-card,
+.empty-state,
+.error,
+.delete-button,
+.topbar-status,
+.brand-mark {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.control-card {
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), border-color .3s ease, box-shadow .35s ease;
+}
+
+.control-card:hover {
+  transform: translateY(-3px) rotateX(.45deg);
+  border-color: rgba(255,255,255,.14);
+  box-shadow: 0 34px 90px rgba(0,0,0,.28), 0 0 55px rgba(141,107,255,.035);
+}
+
+.brand-mark,
+.topbar-status {
+  transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease;
+}
+
+.brand-mark:hover {
+  transform: translateZ(12px) rotateX(-8deg) rotateY(10deg) scale(1.04);
+  box-shadow: 0 12px 28px rgba(184,255,92,.16), 0 0 25px rgba(184,255,92,.12);
+}
+
+.topbar-status:hover {
+  transform: translateZ(8px) rotateX(3deg);
+  border-color: rgba(184,255,92,.24);
+}
+
+.hero h1 {
+  transform-style: preserve-3d;
+  transition: transform .45s cubic-bezier(.2,.8,.2,1), text-shadow .45s ease;
+}
+
+.hero h1:hover {
+  transform: perspective(900px) translateZ(12px) rotateX(2deg) rotateY(-1deg);
+  text-shadow: 0 18px 45px rgba(141,107,255,.12);
+}
+
+.hero p,
+.eyebrow,
+.section-heading h2,
+.sources-heading h2,
+.step-label,
+.field-label {
+  transition: transform .3s cubic-bezier(.2,.8,.2,1), color .3s ease;
+  transform-origin: center left;
+}
+
+.hero p:hover,
+.eyebrow:hover,
+.section-heading h2:hover,
+.sources-heading h2:hover {
+  transform: perspective(700px) translateZ(7px) rotateX(1.5deg);
+}
+
+.upload-zone {
+  transition: transform .3s cubic-bezier(.2,.8,.2,1), border-color .25s ease, background .25s ease, box-shadow .3s ease;
+}
+
+.upload-zone:hover {
+  transform: translateY(-3px) translateZ(8px) rotateX(2deg) rotateY(-1deg);
+  box-shadow: 10px 18px 35px rgba(0,0,0,.18), 0 0 28px rgba(184,255,92,.035);
+}
+
+.select-wrap {
+  perspective: 800px;
+}
+
+.document-controls select {
+  transform-style: preserve-3d;
+  transition: transform .3s cubic-bezier(.2,.8,.2,1), border-color .2s ease, background .2s ease, box-shadow .3s ease;
+}
+
+.document-controls select:hover,
+.document-controls select:focus {
+  transform: translateZ(5px) rotateX(1deg);
+  box-shadow: 0 12px 28px rgba(0,0,0,.15);
+}
+
+.delete-button:hover {
+  transform: translateZ(7px) rotateX(2deg) rotateY(-3deg);
+}
+
+.document-meta {
+  transition: transform .3s cubic-bezier(.2,.8,.2,1), border-color .25s ease, background .25s ease;
+}
+
+.document-meta:hover {
+  transform: translateY(-2px) translateZ(7px) rotateX(1deg);
+  border-color: rgba(184,255,92,.13);
+  background: rgba(184,255,92,.025);
+}
+
+.query-box {
+  perspective: 1000px;
+}
+
+.query-input-wrap:hover {
+  transform: translateZ(4px);
+  border-color: rgba(255,255,255,.16);
+}
+
+.query-prefix {
+  transition: transform .35s cubic-bezier(.2,.8,.2,1);
+}
+
+.query-input-wrap:hover .query-prefix {
+  transform: translateZ(8px) rotateZ(-12deg) rotateY(12deg);
+}
+
+.ask-button {
+  transition: transform .28s cubic-bezier(.2,.8,.2,1), box-shadow .28s ease, background .22s ease;
+}
+
+.ask-button:hover:not(:disabled) {
+  transform: translateY(-3px) translateZ(9px) rotateX(2deg) rotateY(-1deg);
+}
+
+.empty-state,
+.error {
+  transition: transform .3s cubic-bezier(.2,.8,.2,1), border-color .25s ease;
+}
+
+.empty-state:hover,
+.error:hover {
+  transform: translateZ(5px);
+}
+
+.answer-card {
+  transition: transform .4s cubic-bezier(.2,.8,.2,1), border-color .3s ease, box-shadow .4s ease;
+}
+
+.answer-card:hover {
+  transform: translateY(-4px) rotateX(.7deg) rotateY(-.35deg);
+  border-color: rgba(184,255,92,.26);
+  box-shadow: 0 30px 85px rgba(0,0,0,.3), 0 0 45px rgba(184,255,92,.045);
+}
+
+.answer-content h2 {
+  transition: transform .35s cubic-bezier(.2,.8,.2,1);
+  transform-origin: left center;
+}
+
+.answer-content h2:hover {
+  transform: translateZ(10px) rotateX(1deg);
+}
+
+.source-card {
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), border-color .25s ease, background .25s ease, box-shadow .35s ease;
+}
+
+.source-card:hover {
+  transform: translateY(-4px) translateZ(8px) rotateX(1deg) rotateY(-.5deg);
+  box-shadow: 10px 20px 45px rgba(0,0,0,.2);
+}
+
+.source-number,
+.page-badge,
+.score,
+.verified-badge {
+  transition: transform .3s cubic-bezier(.2,.8,.2,1), color .25s ease;
+}
+
+.source-card:hover .source-number {
+  transform: translateZ(8px);
+  color: #717986;
+}
+
+.source-card:hover .page-badge {
+  transform: translateZ(9px) rotateX(3deg);
+  color: #b8ff5c;
+}
+
+.source-card:hover .score {
+  transform: translateZ(5px);
+}
+
+.source-card:hover .verified-badge {
+  transform: translateZ(7px);
+}
+
+.footer span {
+  transition: transform .3s ease, color .25s ease;
+}
+
+.footer span:hover {
+  transform: translateZ(5px);
+  color: #777f8c;
+}
+
+@media (max-width: 760px) {
+  .topbar { padding: 20px 18px 10px; }
+  .workspace { padding: 40px 18px 30px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .control-card:hover,
+  .brand-mark:hover,
+  .topbar-status:hover,
+  .hero h1:hover,
+  .hero p:hover,
+  .eyebrow:hover,
+  .section-heading h2:hover,
+  .sources-heading h2:hover,
+  .upload-zone:hover,
+  .document-controls select:hover,
+  .document-controls select:focus,
+  .delete-button:hover,
+  .document-meta:hover,
+  .query-input-wrap:hover,
+  .ask-button:hover:not(:disabled),
+  .empty-state:hover,
+  .error:hover,
+  .answer-card:hover,
+  .answer-content h2:hover,
+  .source-card:hover,
+  .footer span:hover {
+    transform: none;
+  }
 }
