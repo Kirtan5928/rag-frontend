@@ -29,6 +29,18 @@ function App() {
     const file = event.target.files?.[0];
     if (!file) return;
 
+    const maxFileSize = 25 * 1024 * 1024;
+    if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+      setError('Only PDF files are supported.');
+      event.target.value = '';
+      return;
+    }
+    if (file.size > maxFileSize) {
+      setError('PDF must be 25 MB or smaller.');
+      event.target.value = '';
+      return;
+    }
+
     setUploading(true);
     setError('');
     try {
@@ -87,12 +99,30 @@ function App() {
 
   async function handleDelete() {
     if (!selectedDocument) return;
-    const response = await fetch(`${API_URL}/documents/${selectedDocument}`, { method: 'DELETE' });
-    if (response.ok) {
+
+    const document = documents.find((doc) => doc.document_id === selectedDocument);
+    const confirmed = window.confirm(
+      `Delete "${document?.document_name || 'this document'}" and all of its indexed chunks?`
+    );
+    if (!confirmed) return;
+
+    setError('');
+    try {
+      const response = await fetch(
+        `${API_URL}/documents/${selectedDocument}`,
+        { method: 'DELETE' }
+      );
+      if (!response.ok) {
+        const body = await response.json().catch(() => ({}));
+        throw new Error(body.detail || `Delete failed (${response.status})`);
+      }
+
       setSelectedDocument('');
       await loadDocuments();
       setAnswer('');
       setSources([]);
+    } catch (err) {
+      setError(err.message);
     }
   }
 
