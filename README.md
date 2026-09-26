@@ -1,16 +1,66 @@
-# React + Vite
+# RAG Compliance Copilot — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite frontend for the RAG Compliance Copilot.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Upload PDF reports
+- Select an indexed document or query across all documents
+- Ask grounded compliance/ESG questions
+- Display generated answers with page-level source chunks
+- Delete indexed documents
+- Client-side validation for PDF type and 25 MB upload limit
+- Production configuration through `VITE_API_URL`
 
-## React Compiler
+## Local development
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Install dependencies:
 
-## Expanding the ESLint configuration
+```bash
+npm install
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Create `.env.local` if the backend is not running on the default local URL:
+
+```env
+VITE_API_URL=http://localhost:8000
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+The frontend expects the backend API to expose:
+
+- `GET /documents`
+- `POST /ingest`
+- `POST /query`
+- `DELETE /documents/{document_id}`
+
+## Production build
+
+Build the production bundle:
+
+```bash
+npm run build
+```
+
+Preview the generated production build locally:
+
+```bash
+npm run preview
+```
+
+Vite writes the production bundle to `dist/`.
+
+For the deployed application, set `VITE_API_URL` to the deployed backend URL in the hosting provider's environment settings before building.
+
+## Deployment
+
+The frontend is deployed as a Vite static application. The production deployment uses the same React source as this repository and connects to the deployed FastAPI backend.
+
+Backend repository:
+
+https://github.com/Kirtan5928/rag-compliance-copilot
