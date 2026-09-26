@@ -91,14 +91,14 @@ function App() {
     const file = event.target.files?.[0];
     if (!file) return;
 
-    const maxFileSize = 25 * 1024 * 1024;
+    const maxFileSize = 100 * 1024 * 1024;
     if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
       setError('Only PDF files are supported.');
       event.target.value = '';
       return;
     }
     if (file.size > maxFileSize) {
-      setError('PDF must be 25 MB or smaller.');
+      setError('PDF must be 100 MB or smaller.');
       event.target.value = '';
       return;
     }
@@ -242,7 +242,7 @@ function App() {
               <span className="upload-icon"><UploadIcon /></span>
               <span className="upload-copy">
                 <strong>{uploading ? 'Processing report…' : 'Upload PDF'}</strong>
-                <small>PDF only · up to 25 MB</small>
+                <small>PDF only · up to 100 MB</small>
               </span>
               <span className="upload-arrow"><ArrowIcon /></span>
             </label>
