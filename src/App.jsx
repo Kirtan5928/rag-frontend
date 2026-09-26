@@ -23,7 +23,26 @@ function App() {
     }
   }
 
-  useEffect(() => { loadDocuments(); }, []);
+  useEffect(() => {
+    let ignore = false;
+
+    async function fetchDocuments() {
+      try {
+        const response = await fetch(`${API_URL}/documents`);
+        if (!response.ok) throw new Error('Could not load documents');
+        const data = await response.json();
+        if (!ignore) setDocuments(data);
+      } catch (err) {
+        if (!ignore) setError(err.message);
+      }
+    }
+
+    fetchDocuments();
+
+    return () => {
+      ignore = true;
+    };
+  }, []);
 
   async function handleUpload(event) {
     const file = event.target.files?.[0];
