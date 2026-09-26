@@ -207,12 +207,12 @@ button, label, select { -webkit-tap-highlight-color: transparent; }
 }
 
 .control-card {
-  padding: 25px;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: linear-gradient(135deg, rgba(20,22,29,.9), rgba(12,14,19,.72));
-  box-shadow: 0 25px 80px rgba(0,0,0,.22);
-  backdrop-filter: blur(20px);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 .section-heading {
@@ -745,7 +745,6 @@ button, label, select { -webkit-tap-highlight-color: transparent; }
 
 @media (max-width: 520px) {
   .brand-caption, .topbar-status { display: none; }
-  .control-card { padding: 17px; border-radius: 16px; }
   .answer-card { padding: 20px; }
   .answer-content h2 { font-size: 31px; }
   .source-card { grid-template-columns: 33px 1fr; }
@@ -763,7 +762,6 @@ button, label, select { -webkit-tap-highlight-color: transparent; }
   perspective: 1200px;
 }
 
-.control-card,
 .query-input-wrap,
 .ask-button,
 .upload-zone,
@@ -780,13 +778,7 @@ button, label, select { -webkit-tap-highlight-color: transparent; }
 }
 
 .control-card {
-  transition: transform .35s cubic-bezier(.2,.8,.2,1), border-color .3s ease, box-shadow .35s ease;
-}
-
-.control-card:hover {
-  transform: translateY(-3px) rotateX(.45deg);
-  border-color: rgba(255,255,255,.14);
-  box-shadow: 0 34px 90px rgba(0,0,0,.28), 0 0 55px rgba(141,107,255,.035);
+  transition: none;
 }
 
 .brand-mark,
@@ -972,7 +964,6 @@ button, label, select { -webkit-tap-highlight-color: transparent; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .control-card:hover,
   .brand-mark:hover,
   .topbar-status:hover,
   .hero h1:hover,
