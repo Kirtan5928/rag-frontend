@@ -315,15 +315,21 @@ button, label, select { -webkit-tap-highlight-color: transparent; }
   border: 1px solid var(--line);
   border-radius: 13px;
   outline: none;
-  color: #dce0e6;
-  background: rgba(255,255,255,.035);
+  color: #f1f3f6;
+  background: #11141b;
+  color-scheme: dark;
   appearance: auto;
   transition: border-color .2s ease, background .2s ease;
 }
 
 .document-controls select:hover, .document-controls select:focus {
-  border-color: rgba(255,255,255,.17);
-  background: rgba(255,255,255,.05);
+  border-color: rgba(184,255,92,.28);
+  background: #151922;
+}
+
+.document-controls select option {
+  color: #f1f3f6;
+  background: #11141b;
 }
 
 .delete-button {
