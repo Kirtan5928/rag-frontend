@@ -18,6 +18,7 @@ function App() {
       const response = await fetch(`${API_URL}/documents`);
       if (!response.ok) throw new Error('Could not load documents');
       setDocuments(await response.json());
+      setError('');
     } catch (err) {
       setError(err.message);
     }
